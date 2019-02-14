@@ -1,27 +1,34 @@
 import time
 
-work_time = 25 #minutes
-break_time = 5 #minutes
-
 def run_time(t_run):
     for t in range (t_run, -1, -1):
         minutes = int(t/60)
         seconds = t%60
         print(str(minutes) + ":" + str(seconds))
-        time.sleep(1)
+        time.sleep(1)  
 
+def pick_short_tasks(counter):
+    exercises = ["situps", "pullups", "plank", "pushups"]
+    short_tasks = ["refill water", "message girlfriend", "use the bathroom", "shoulder stretches"]
+    exercise_todo = exercises[counter]
+    short_task_todo = short_tasks[counter]
+    print("Time for a short break!!\n During this time you should do the following things:\n 1. " + exercise_todo + "\n 2. " + short_task_todo)
 
 def run_timer():
     do_pomodoro = True
     break_counter = 0
-    run_time(1500)
+    task_counter = 0
     while(do_pomodoro):
+        run_time(8)
         if(break_counter >= 3):
-            run_time(1800)
+            print("Time for a long break!!\n During this time, you should do the following things:\n 1. Eat something. 2. Take out the dog")
+            run_time(10)
             do_pomodoro = False
         else:
-            run_time(300)
+            pick_short_tasks(task_counter)
+            task_counter += 1
+            run_time(5)
+            print("Your break is over! Time to get back to work!")
             break_counter += 1
-
 
 print(run_timer())
