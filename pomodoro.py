@@ -10,17 +10,12 @@ import winsound
 root = tkinter.Tk()
 root.withdraw()
 
-clock = Label(root, font=('Times', 20, 'bold'))
-clock.grid(row=0, column=1)
-
-def create_clock(t_run):
+def run_clock(t_run):
     for t in range (t_run, -1, -1):
         minutes = int(t/60)
         seconds = t%60
-        time_string = time.strftime(str(minutes) + ":" + str(seconds))
+        print(str(minutes) + ":" + str(seconds))
         time.sleep(1)
-    clock.config(text=time_string) 
-    clock.after(20)
 
 def pick_short_tasks(counter, listex):
     short_tasks = ["refill water", "message girlfriend", "use the bathroom", "shoulder stretches"]
@@ -43,14 +38,14 @@ def run_timer():
     task_counter = 0
     while(pomodoro_count <= total_pomodoros):
         messagebox.showinfo("Pomodoro started!", "\n If you wish to start a 25-minute work period, please click the button below.")
-        create_clock(8)
+        run_clock(1500)
         if((break_counter != 0) and ((break_counter/3).is_integer())):
             messagebox.showinfo("Time for a long break!!", "\n During this time, you should do the following things:\n 1. Eat something. \n 2. Take out the dog")
-            create_clock(10)
+            run_clock(1800)
         else:
             pick_short_tasks(task_counter, exercises_todo)
             task_counter += 1
-            create_clock(5)
+            run_clock(300)
             messagebox.showinfo("Your break is over!", "\nTime to get back to work!")
             break_counter += 1
 
