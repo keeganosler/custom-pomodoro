@@ -1,20 +1,26 @@
 import time
 
 import tkinter
-from tkinter import messagebox
+#from tkinter import messagebox
 from tkinter import simpledialog
+from tkinter import *
 
 import winsound
 
 root = tkinter.Tk()
 root.withdraw()
 
-def run_time(t_run):
+clock = Label(root, font=('Times', 20, 'bold'))
+clock.grid(row=0, column=1)
+
+def create_clock(t_run):
     for t in range (t_run, -1, -1):
         minutes = int(t/60)
         seconds = t%60
-        print(str(minutes) + ":" + str(seconds))
-        time.sleep(1)  
+        time_string = time.strftime(str(minutes) + ":" + str(seconds))
+        time.sleep(1)
+    clock.config(text=time_string) 
+    clock.after(20)
 
 def pick_short_tasks(counter, listex):
     short_tasks = ["refill water", "message girlfriend", "use the bathroom", "shoulder stretches"]
@@ -37,14 +43,14 @@ def run_timer():
     task_counter = 0
     while(pomodoro_count <= total_pomodoros):
         messagebox.showinfo("Pomodoro started!", "\n If you wish to start a 25-minute work period, please click the button below.")
-        run_time(8)
+        create_clock(8)
         if((break_counter != 0) and ((break_counter/3).is_integer())):
-            messagebox.showinfo("Time for a long break!!", "\n During this time, you should do the following things:\n 1. Eat something. \n2. Take out the dog")
-            run_time(10)
+            messagebox.showinfo("Time for a long break!!", "\n During this time, you should do the following things:\n 1. Eat something. \n 2. Take out the dog")
+            create_clock(10)
         else:
             pick_short_tasks(task_counter, exercises_todo)
             task_counter += 1
-            run_time(5)
+            create_clock(5)
             messagebox.showinfo("Your break is over!", "\nTime to get back to work!")
             break_counter += 1
 
@@ -53,6 +59,4 @@ def setup_pomodoro():
     num_pomodoro_sessions = int((day_length*3600) / 10500)
     return num_pomodoro_sessions
 
-print(run_timer())
-
-
+run_timer()
