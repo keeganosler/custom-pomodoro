@@ -2,6 +2,8 @@ import time
 
 import tkinter
 from tkinter import messagebox
+from tkinter import simpledialog
+
 import winsound
 
 root = tkinter.Tk()
@@ -14,30 +16,43 @@ def run_time(t_run):
         print(str(minutes) + ":" + str(seconds))
         time.sleep(1)  
 
-def pick_short_tasks(counter):
-    exercises = ["situps", "pullups", "plank", "pushups"]
+def pick_short_tasks(counter, listex):
     short_tasks = ["refill water", "message girlfriend", "use the bathroom", "shoulder stretches"]
-    exercise_todo = exercises[counter]
+    exercise_todo = listex[counter]
     short_task_todo = short_tasks[counter]
     messagebox.showinfo("Time for a short break!!", "\n During this time you should do the following things:\n 1. " + exercise_todo + "\n 2. " + short_task_todo)
 
+def setup_exercises():
+    exercises_todo = []
+    for i in range(0,4):
+        exercise = simpledialog.askstring("Exercises to do", "Please enter an exercise: ")
+        exercises_todo.append(exercise)
+    return exercises_todo    
+
 def run_timer():
-    do_pomodoro = True
+    total_pomodoros = setup_pomodoro()
+    exercises_todo = setup_exercises()
+    pomodoro_count = 0
     break_counter = 0
     task_counter = 0
-    while(do_pomodoro):
+    while(pomodoro_count <= total_pomodoros):
         messagebox.showinfo("Pomodoro started!", "\n If you wish to start a 25-minute work period, please click the button below.")
         run_time(8)
-        if(break_counter >= 3):
+        if((break_counter != 0) and ((break_counter/3).is_integer())):
             messagebox.showinfo("Time for a long break!!", "\n During this time, you should do the following things:\n 1. Eat something. \n2. Take out the dog")
             run_time(10)
-            do_pomodoro = False
         else:
-            pick_short_tasks(task_counter)
+            pick_short_tasks(task_counter, exercises_todo)
             task_counter += 1
             run_time(5)
             messagebox.showinfo("Your break is over!", "\nTime to get back to work!")
             break_counter += 1
 
+def setup_pomodoro():
+    day_length = int(simpledialog.askstring("Welcome!", "Good day sir! \nHow long would you like your workday to be?"))
+    num_pomodoro_sessions = int((day_length*3600) / 10500)
+    return num_pomodoro_sessions
+
 print(run_timer())
+
 
