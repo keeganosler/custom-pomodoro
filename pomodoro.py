@@ -10,6 +10,15 @@ import winsound
 root = tkinter.Tk()
 root.withdraw()
 
+#determines from user input how many pomodoros are to be performed given the number of hours the user wants to be working for
+def setup_pomodoro():
+    day_length = int(simpledialog.askstring("Welcome!", "Good day sir! \nHow long would you like your workday to be?"))
+    if(!(day_length.is_integer())):
+        messagebox.showinfo("Error", "Please enter a valid number of hours.")
+        setup_pomodoro()
+    num_pomodoro_sessions = int((day_length*3600) / 10500)
+    return num_pomodoro_sessions
+
 #starts the clock when called, for however much time its told to run for
 def run_clock(t_run):
     for t in range (t_run, -1, -1):
@@ -19,11 +28,9 @@ def run_clock(t_run):
         time.sleep(1)
 
 #decides what tasks are performed during the short breaks
-def pick_short_tasks(counter, listex):
+def pick_short_tasks(counter, list_exercises):
     short_tasks = ["refill water", "message girlfriend", "use the bathroom", "shoulder stretches"]
-    exercise_todo = listex[counter]
-    short_task_todo = short_tasks[counter]
-    messagebox.showinfo("Time for a short break!!", "\n During this time you should do the following things:\n 1. " + exercise_todo + "\n 2. " + short_task_todo)
+    messagebox.showinfo("Time for a short break!!", "\n During this time you should do the following things:\n 1. " + list_exercises[counter] + "\n 2. " + short_tasks[counter])
 
 #sets up the list of exercises (one to be performed each short break) from user input
 def setup_exercises():
@@ -56,12 +63,7 @@ def run_timer():
             run_clock(300)
             messagebox.showinfo("Your break is over!", "\nTime to get back to work!")
             break_counter += 1
-
-#determines from user input how many pomodoros are to be performed given the number of hours the user wants to be working for
-def setup_pomodoro():
-    day_length = int(simpledialog.askstring("Welcome!", "Good day sir! \nHow long would you like your workday to be?"))
-    num_pomodoro_sessions = int((day_length*3600) / 10500)
-    return num_pomodoro_sessions
+    messagebox.showinfo("All done!", "I'd say that's enough work for one day! \nGoodnight sir!")
 
 #runs the program
 run_timer()
