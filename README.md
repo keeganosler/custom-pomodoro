@@ -4,6 +4,8 @@ This is a customized productivity clock/timer based on the Pomodoro method.
 
 ## What is the pomodoro method?
 
+See the wikipedia article [here!](https://en.wikipedia.org/wiki/Pomodoro_Technique)
+
 
 ## How does this program work?
 
