@@ -13,9 +13,9 @@ root.withdraw()
 #determines from user input how many pomodoros are to be performed given the number of hours the user wants to be working for
 def setup_pomodoro():
     day_length = int(simpledialog.askstring("Welcome!", "Good day sir! \nHow long would you like your workday to be?"))
-    if(!(day_length.is_integer())):
-        messagebox.showinfo("Error", "Please enter a valid number of hours.")
-        setup_pomodoro()
+    #if(!(day_length.is_integer())):
+        #messagebox.showinfo("Error", "Please enter a valid number of hours.")
+        #setup_pomodoro()
     num_pomodoro_sessions = int((day_length*3600) / 10500)
     return num_pomodoro_sessions
 
