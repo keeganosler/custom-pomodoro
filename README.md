@@ -4,7 +4,7 @@ This is a customized productivity clock/timer based on the Pomodoro method.
 
 ## What is the pomodoro method?
 
-Pomodoro is a productivity method named for the Italian word for tomato. see the wikipedia article [here!](https://en.wikipedia.org/wiki/Pomodoro_Technique)
+Pomodoro is a productivity method named for the Italian word for tomato. See the wikipedia article [here!](https://en.wikipedia.org/wiki/Pomodoro_Technique)
 
 
 ## How does this program work?
@@ -12,6 +12,8 @@ Pomodoro is a productivity method named for the Italian word for tomato. see the
 This program uses python 3 and the Tkinter module to put a custom spin on the pomodoro method.
 
 My program starts by greeting the user and ask them how many hours they would like to work for - this determines how many pomodoro "sessions" will take place, and when to stop the program.
+
+!(screenshot)[https://github.com/keeganosler/custom-pomodoro/blob/master/readme_images/enter_exercises.PNG]
 
 Then the program prompts the user to input a list of physical exercises (situps, pushups, etc) to be performed during the short break.  There are 2 preloaded tasks, one of which will be performed during every short break along with one of the entered exercises.
 
