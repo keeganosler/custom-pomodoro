@@ -1,6 +1,6 @@
 # custom-pomodoro
 
-This is a customized productivity clock/timer based on the Pomodoro method.
+This is a customized productivity clock/timer based on the Pomodoro method. This is a variation on the pomodoro method that works for me and does not claim to be the original, true pomodoro method nor does it claim to be one that works for everybody.
 
 ## What is the pomodoro method?
 
