@@ -9,13 +9,13 @@ Pomodoro is a productivity method named for the Italian word for tomato. See the
 
 ## How does this program work?
 
-This program uses python 3 and the Tkinter module to put a custom spin on the pomodoro method.
+This program uses Python 3 with the Tkinter module to put a custom spin on the pomodoro method.
 
-My program starts by greeting the user and ask them how many hours they would like to work for - this determines how many pomodoro "sessions" will take place, and when to stop the program.
+My program starts by greeting the user and ask them how many hours they would like to work for. This determines how many pomodoro "sessions" will take place and thus when to stop the program.
 
 ![screenshot](https://github.com/keeganosler/custom-pomodoro/blob/master/readme_images/initial_greeting.PNG)
 
-Then the program prompts the user to input a list of physical exercises (situps, pushups, etc) to be performed during the short break.  There are 2 preloaded tasks, one of which will be performed during every short break along with one of the entered exercises.
+The program then prompts the user to input a list of physical exercises (situps, pushups, etc) to be performed during the short break.  There are 2 preloaded tasks, one of which will be performed during every short break along with one of the entered exercises.
 
 ![screenshot](https://github.com/keeganosler/custom-pomodoro/blob/master/readme_images/enter_exercises.PNG)
 
